@@ -10,10 +10,7 @@
 </head>
 
 <body>
-    <div class="topo">
-        <img src="/resources/imagens/hospital.png" class="mr-3 img-thumbnail">
-        Sistema Médico
-    </div>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
     <h1>Alterar cadastro do paciente</h1>
 

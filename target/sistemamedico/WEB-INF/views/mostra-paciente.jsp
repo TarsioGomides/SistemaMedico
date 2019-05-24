@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <div class="topo">
+    <nav class="topo">
         <img src="/resources/imagens/hospital.png" class="mr-3 img-thumbnail">
         Sistema Médico
-    </div>
+    </nav>
 
     <h1>Alterar cadastro do paciente</h1>
 
