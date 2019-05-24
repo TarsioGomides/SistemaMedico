@@ -3,8 +3,8 @@
 
 ##### Para executar o projeto, deve-se seguir os seguintes passos:  
 
-1. Abre o projeto em alguma IDE  
+1. Abra o projeto em alguma IDE  
 
-2. Executa a classe EmbeddedTomcat para subir o servidor embutido  
+2. Execute a classe EmbeddedTomcat para subir o servidor embutido  
 
-3. Acessa o prjeto no navegador através da seguinte URL: http://localhost:8080
+3. Acesse o projeto no navegador através da seguinte URL: http://localhost:8080
