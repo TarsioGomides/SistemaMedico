@@ -25,17 +25,27 @@ public class ConfiguracaoJPA {
         /******** Configuração da base de dados ********/
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUsername("root");
-        dataSource.setPassword("tarcas123");
+        dataSource.setPassword("");
+        dataSource.setUrl("jdbc:hsqldb:file:C:/banco/sistemamedicobd");
+        dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+
+        /*
+        dataSource.setUsername("root");
+        dataSource.setPassword("");
         dataSource.setUrl("jdbc:mysql://localhost:3306/sistemamedicobd");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        */
 
         factoryBean.setDataSource(dataSource);
 
         /******** Configuração de algumas propriedades do Hibernate ********/
         Properties props = new Properties();
-        props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        //props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         props.setProperty("hibernate.show_sql", "true");
+        props.setProperty("hibernate.format_sql", "true");
         props.setProperty("hibernate.hbm2ddl.auto", "update");//Atualiza o banco, gera as tabelas se for preciso
+        props.setProperty("hsqldb.default_table_type", "memory");
 
         factoryBean.setJpaProperties(props);
 
