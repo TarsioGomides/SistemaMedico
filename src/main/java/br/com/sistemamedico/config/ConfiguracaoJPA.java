@@ -2,6 +2,8 @@ package br.com.sistemamedico.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -9,6 +11,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.util.Properties;
 
 @EnableTransactionManagement //Habilita o gerenciamento de transações, ou seja, nossa operação com o banco de dados deve ser gerenciada com uma transação.
@@ -24,24 +27,26 @@ public class ConfiguracaoJPA {
 
         /******** Configuração da base de dados ********/
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        /*
         dataSource.setUsername("root");
         dataSource.setPassword("");
-        dataSource.setUrl("jdbc:hsqldb:file:C:/banco/sistemamedicobd");
+        dataSource.setUrl("jdbc:hsqldb:mem:sistemamedico");//file:C:/banco/sistemame
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+        */
 
-        /*
+
         dataSource.setUsername("root");
         dataSource.setPassword("");
         dataSource.setUrl("jdbc:mysql://localhost:3306/sistemamedicobd");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        */
+
 
         factoryBean.setDataSource(dataSource);
 
         /******** Configuração de algumas propriedades do Hibernate ********/
         Properties props = new Properties();
-        //props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        props.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        //props.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         props.setProperty("hibernate.show_sql", "true");
         props.setProperty("hibernate.format_sql", "true");
         props.setProperty("hibernate.hbm2ddl.auto", "update");//Atualiza o banco, gera as tabelas se for preciso
@@ -63,4 +68,9 @@ public class ConfiguracaoJPA {
         return new JpaTransactionManager(emf);
     }
 
+
+
 }
+
+
+
