@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class PacienteController {
@@ -67,8 +67,8 @@ public class PacienteController {
 
      * RETORNO:   Retorna um objeto do tipo ModelAndView que contém o nome da view que deve ser exibida e um paciente
      ***************************************************************************************************************/
-    @RequestMapping("mostraPaciente")
-    public ModelAndView mostra(Integer id, RedirectAttributes redirectAttributes) {
+    @RequestMapping("mostraPaciente/{id}")
+    public ModelAndView mostra(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(pacienteService.servicoMostrarPaciente(id, redirectAttributes, modelAndView));
 
@@ -80,8 +80,10 @@ public class PacienteController {
 
      * RETORNO:   Retorna uma string com o nome da view que deve ser exibida
      ***************************************************************************************************************/
-    @RequestMapping("alterarPaciente")
-    public String altera(@Valid Paciente paciente, BindingResult result, RedirectAttributes redirectAttributes) {
+    //@Post @PostMapping
+    // @RequestMapping(value = "alterarPaciente", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @RequestMapping(value = "alterarPaciente")
+    public String altera(@Valid @RequestBody Paciente paciente, BindingResult result, RedirectAttributes redirectAttributes) {
         return pacienteService.servicoAlterarPaciente(paciente, result, redirectAttributes);
     }
 
@@ -94,5 +96,34 @@ public class PacienteController {
     public String remover(Integer id, RedirectAttributes redirectAttributes) {
         return pacienteService.servicoRemoverPaciente(id, redirectAttributes);
     }
+
+
+
+    /********************************************************************************************************************/
+    /********************************************************************************************************************/
+    /********************************************************************************************************************/
+    /********************************************************************************************************************/
+    @RequestMapping("listarPacientesJSON")
+    @ResponseBody//A resposta do spring vai ser o corpo da resposta
+    public List<Paciente> listarJSON() {
+        List<Paciente> listaDePacientes = pacienteService.servicoListarPaciente();
+
+        return listaDePacientes;
+    }
+
+    @RequestMapping("removerPacienteJSON")
+    @ResponseBody
+    public String removerJSON(Integer id, RedirectAttributes redirectAttributes) {
+        return pacienteService.servicoRemoverPaciente(id, redirectAttributes);
+    }
+
+    @RequestMapping("mostraPacienteJSON")
+    public ModelAndView mostraJSON(Integer id, RedirectAttributes redirectAttributes) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(pacienteService.servicoMostrarPaciente(id, redirectAttributes, modelAndView));
+
+        return modelAndView;
+    }
+
 
 }

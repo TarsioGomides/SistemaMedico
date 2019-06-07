@@ -1,19 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Formuário de Alteração do Paciente</title>
     <link href="/resources/css/base.css" rel="stylesheet" type="text/css" media="all" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
-    <%@include file="/WEB-INF/views/cabecalho.jsp"%>
-
     <h1>Alterar cadastro do paciente</h1>
 
+    <!--
     <form action="alterarPaciente" method="POST">
         <input type="hidden" name="id" value="${paciente.id}" />
 
@@ -32,5 +30,9 @@
 
         <input class="btn btn-primary" type="submit" value="Alterar"/>
     </form>
+    -->
+
+    <script src="resources/js/jquery-3.4.1.js"></script>
+    <script src="resources/js/mostra-paciente.js"></script>
 </body>
 </html>

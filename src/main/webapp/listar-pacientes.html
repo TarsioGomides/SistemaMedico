@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Pacientes</title>
+    <link href="/resources/css/base.css" rel="stylesheet" type="text/css" media="all" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Lista de Pacientes Cadastrados</h1>
+
+    <a class="btn btn-primary" href="cadastroPaciente">Cadastrar novo paciente</a><!-- ainda não funciona -->
+    <br /> <br />
+
+
+    <!--parte de paciente-->
+    <!--
+    ${sucessoAdicionarPaciente}
+    ${pacienteInexistenteMostrarPaciente}
+    ${sucessoAlterarPaciente}
+    ${pacienteInexistenteRemoverPaciente}
+    -->
+    <!--parte de exames-->
+    <!--
+    ${pacienteInexistenteRemoverExames}
+    ${pacienteInexistenteListarExames}
+    -->
+    <br />
+    <span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
+
+    <table id="tabela-lista-pacientes" class="table table-hover table-dark">
+        <thead>
+            <td>Nome</td>
+            <td>Idade</td>
+            <td>Telefone</td>
+
+        </thead>
+
+        <!--
+        <tr>
+            <td>
+                <a href="${s:mvcUrl('PC#mostra').arg(0, paciente.id).build()}">Alterar</a>
+
+            </td>
+            <td>
+                <a href="removerPaciente?id=${paciente.id}">Remover</a>
+            </td>
+            <td>
+                <a href="listarExames?pacienteId=${paciente.id}">Exames</a>
+            </td>
+        </tr>
+        -->
+    </table>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="resources/js/jquery-3.4.1.js"></script>
+    <script src="resources/js/principal.js"></script>
+    <script src="resources/js/remove-paciente.js"></script>
+    <script src="resources/js/mostra-paciente.js"></script>
+</body>
+</html>

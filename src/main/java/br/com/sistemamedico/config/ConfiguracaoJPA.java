@@ -2,8 +2,6 @@ package br.com.sistemamedico.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -36,7 +34,7 @@ public class ConfiguracaoJPA {
 
 
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setPassword("tarcas123");
         dataSource.setUrl("jdbc:mysql://localhost:3306/sistemamedicobd");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 

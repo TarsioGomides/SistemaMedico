@@ -10,9 +10,27 @@
     <finalName>sistemamedico</finalName>
 
       <plugins>
+          <!-- PLUGIN PARA O HEROKU -->
           <plugin>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-maven-plugin</artifactId>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-dependency-plugin</artifactId>
+              <version>2.3</version>
+              <executions>
+                  <execution>
+                      <phase>package</phase>
+                      <goals><goal>copy</goal></goals>
+                      <configuration>
+                          <artifactItems>
+                              <artifactItem>
+                                  <groupId>com.github.jsimone</groupId>
+                                  <artifactId>webapp-runner</artifactId>
+                                  <version>7.0.57.2</version>
+                                  <destFileName>webapp-runner.jar</destFileName>
+                              </artifactItem>
+                          </artifactItems>
+                      </configuration>
+                  </execution>
+              </executions>
           </plugin>
       </plugins>
   </build>
@@ -135,6 +153,19 @@
         </dependency>
 
 
+        <!-- DEPENDÊNCIAS PARA O JACKSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
+
         <!-- DEPENDÊNCIAS PARA O EMBEDDED TOMCAT-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -154,27 +185,9 @@
 
 
         <!-- DEPENDÊNCIAS PARA O HSQLDB-->
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.4.0</version>
-            <scope>runtime</scope>
-        </dependency>
+
+        <!-- DEPENDÊNCIAS PARA O POSTGRESQL-->
 
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 </project>

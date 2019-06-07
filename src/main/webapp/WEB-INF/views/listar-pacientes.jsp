@@ -2,6 +2,7 @@
 
 <!-- Import das taglibs -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
@@ -45,7 +46,7 @@
                 <td>${paciente.idade}</td>
                 <td>${paciente.telefone}</td>
                 <td>
-                    <a href="mostraPaciente?id=${paciente.id}">Alterar</a>
+                    <a href="${s:mvcUrl('PC#mostra').arg(0, paciente.id).build()}">Alterar</a><!--mostraPaciente?id=${paciente.id}-->
                 </td>
                 <td>
                     <a href="removerPaciente?id=${paciente.id}">Remover</a>

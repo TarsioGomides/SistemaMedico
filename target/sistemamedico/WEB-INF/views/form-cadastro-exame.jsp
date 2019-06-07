@@ -11,9 +11,6 @@
 <body>
     <%@include file="/WEB-INF/views/cabecalho.jsp"%>
 
-    <div>${sucesso}</div>
-    <div>${falha}</div>
-
     <form action="adicionaExame" method="POST">
         <div class="form-group col-6">
             Nome do Exame:<br/>

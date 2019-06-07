@@ -12,10 +12,7 @@
 </head>
 
 <body>
-    <div class="topo">
-        <img src="/resources/imagens/hospital.png" class="mr-3 img-thumbnail">
-        Sistema Médico
-    </div>
+    <%@include file="/WEB-INF/views/cabecalho.jsp"%>
 
     <h1>Alterar exame</h1>
 
