@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sistemamedico:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sistemamedico</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="sistemamedico.war">
+      <element id="artifact" artifact-name="sistemamedico:war exploded" />
+    </root>
+  </artifact>
+</component>

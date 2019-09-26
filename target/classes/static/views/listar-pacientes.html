@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="alurapic">
+<head>
+    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../css/base.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../js/angular.min.js"> </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/controller/paciente-controller.js"></script>
+</head>
+<body>
+    <nav class="topo">
+        <img src="../imagens/hospital.png" class="mr-3 img-thumbnail">
+        Sistema Médico
+    </nav>
+
+    <h1>Lista de Pacientes Cadastrados</h1>
+
+    <a class="btn btn-primary" href="cadastroPaciente">Cadastrar novo paciente</a>
+    <br /> <br />
+
+
+    <table class="table table-hover table-dark" ng-controller="PacienteController">
+        <tr>
+            <td>Nome</td>
+            <td>Idade</td>
+            <td>Telefone</td>
+
+        </tr>
+
+        <tr ng-repeat="paciente in pacientes">
+            <td>{{paciente.nome}}</td>
+            <td>{{paciente.idade}}</td>
+            <td>{{paciente.telefone}}</td>
+            <td>
+                <a href="mostraPaciente?id={{paciente.id}}">Alterar</a>
+            </td>
+            <td>
+                <a href="removerPaciente?id={{paciente.id}}">Remover</a>
+            </td>
+            <td>
+                <a href="listarExames?pacienteId={{paciente.id}}">Exames</a>
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>

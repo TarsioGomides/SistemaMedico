@@ -4,6 +4,8 @@ import br.com.sistemamedico.models.Paciente;
 import br.com.sistemamedico.services.PacienteService;
 import br.com.sistemamedico.validation.PacienteValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -14,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@RestController
 public class PacienteController {
     @Autowired
     PacienteService pacienteService;
@@ -54,12 +56,17 @@ public class PacienteController {
      * RETORNO:   Retorna um objeto do tipo ModelAndView que contém o nome da view que deve ser exibida e uma lista
      com os pacientes
      ***************************************************************************************************************/
-    @RequestMapping("listarPacientes")
-    public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("listar-pacientes");
-        modelAndView.addObject("pacientes", pacienteService.servicoListarPaciente());
+//    @RequestMapping("listarPacientes")
+//    public ModelAndView listar() {
+//        ModelAndView modelAndView = new ModelAndView("listar-pacientes");
+//        modelAndView.addObject("pacientes", pacienteService.servicoListarPaciente());
+//
+//        return modelAndView;
+//    }
 
-        return modelAndView;
+    @GetMapping(path = "listarPacientes")
+    public ResponseEntity<?> listar() {
+        return new ResponseEntity<>(pacienteService.servicoListarPaciente(), HttpStatus.OK);
     }
 
     /***************************************************************************************************************
